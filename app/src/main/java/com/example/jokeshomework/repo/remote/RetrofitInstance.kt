@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://shibe.online/api/"
+    private const val BASE_URL = "https://v2.jokeapi.dev/joke/"
 
     private val client = HttpLoggingInterceptor()
         .apply {
