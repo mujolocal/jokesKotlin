@@ -14,7 +14,7 @@ import java.lang.Exception
 
 class MainViewModel: ViewModel() {
     private  val TAG = "MainViewModel"
-    lateinit var jokeResponse:JokeResponse
+//    lateinit var jokeResponse:JokeResponse
 
     private val _jokes = MutableLiveData<JokeResponse>()
 
