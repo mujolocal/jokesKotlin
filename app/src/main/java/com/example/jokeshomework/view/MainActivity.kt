@@ -1,5 +1,6 @@
 package com.example.jokeshomework.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,9 +32,10 @@ class MainActivity : AppCompatActivity() {
     }
     fun setListeners(){
         binding.requestButton.setOnClickListener {
-            binding.txt1.text = "change is good"
-            viewModel.requestJokes()
-
+//            binding.txt1.text = "change is good"
+//            viewModel.requestJokes()
+                var intent: Intent = Intent(this,JokesActivity::class.java)
+            startActivity(intent)
         }
 
     }
