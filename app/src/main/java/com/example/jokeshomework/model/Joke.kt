@@ -1,6 +1,7 @@
 package com.example.jokeshomework.model
 
 import com.squareup.moshi.JsonClass
+import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
 data class Joke(
@@ -13,4 +14,4 @@ data class Joke(
     val safe: Boolean,
     val setup: String?,
     val type: String
-)
+):Serializable

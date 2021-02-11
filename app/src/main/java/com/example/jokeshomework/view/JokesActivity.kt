@@ -6,37 +6,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.jokeshomework.R
 import com.example.jokeshomework.databinding.ActivityJokesBinding
+import com.example.jokeshomework.model.JokeResponse
 
 class JokesActivity: AppCompatActivity() {
+    val JOKESPACKAGEKEY: String = "jokespackagekey"
     lateinit var binder: ActivityJokesBinding
+    lateinit var jokeResponse: JokeResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binder = DataBindingUtil.setContentView(this, R.layout.activity_jokes)
+        jokeResponse = intent.getSerializableExtra(JOKESPACKAGEKEY) as JokeResponse
+        binder.txt2.text = jokeResponse.jokes.toString()
+
 
     }
 
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-    }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onPostResume() {
-        super.onPostResume()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 }
