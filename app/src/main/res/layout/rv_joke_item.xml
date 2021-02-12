@@ -8,9 +8,20 @@
 
     <TextView
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:text="joke_txt"
         android:id="@+id/joke_txt"
   />
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/joke_answer_tv"
+        android:text="this is the anwer"
+        android:visibility="invisible"/>
+    <CheckBox
+        android:id="@+id/save_joke_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Like"/>
 
 </LinearLayout>
