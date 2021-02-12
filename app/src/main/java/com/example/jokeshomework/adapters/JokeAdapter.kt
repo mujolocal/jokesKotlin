@@ -1,6 +1,7 @@
 package com.example.jokeshomework.adapters
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.graphics.Color
 import android.renderscript.ScriptGroup
 import android.text.Layout
@@ -10,26 +11,41 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jokeshomework.R
 import com.example.jokeshomework.model.Joke
 
-class JokeAdapter(val jokes: List<Joke>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>() {
+import com.example.jokeshomework.view.JokeViewActivity
+import com.example.jokeshomework.view.MainActivity
+
+class JokeAdapter(val jokes: List<Joke>, val initialActivity: AppCompatActivity) : RecyclerView.Adapter<JokeAdapter.ViewHolder>() {
     private  val TAG = "JokeAdapter"
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    class ViewHolder(view: View, val initialActivity: AppCompatActivity) : RecyclerView.ViewHolder(view) {
+        private val JOKEKEY: String = "jokekey"
         val textView: TextView
         val answerView: TextView
         val checkBox: CheckBox
+        lateinit var joke:Joke
+
         init {
             checkBox = view.findViewById(R.id.save_joke_cb)
                 checkBox.setOnClickListener(View.OnClickListener {
                     Log.d(TAG, "clicked: ")
                 })
+
             answerView = view.findViewById(R.id.joke_answer_tv)
                 answerView.textSize = 15F
+
             textView = view.findViewById(R.id.joke_txt)
                 textView.textSize = 15.0F
-                textView.setBackgroundColor(Color.GRAY)
+                textView.setOnClickListener(View.OnClickListener {
+                    val intent: Intent = Intent(initialActivity, JokeViewActivity::class.java )
+                    intent.putExtra(JOKEKEY, joke)
+                    initialActivity.startActivity(intent)
+                })
                 textView.setOnLongClickListener(View.OnLongClickListener {
                     answerView.visibility =View.VISIBLE
                     true
@@ -47,10 +63,11 @@ class JokeAdapter(val jokes: List<Joke>) : RecyclerView.Adapter<JokeAdapter.View
             parent,
             false
         )
-        return ViewHolder(view)
+        return ViewHolder(view, initialActivity)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.joke = jokes[position]
         if(jokes[position].joke == null){
             holder.textView.text = jokes[position].setup
             holder.answerView.text = jokes[position].delivery

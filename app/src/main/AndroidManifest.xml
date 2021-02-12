@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.JokesActivity"/>
+        <activity android:name=".view.JokeViewActivity"/>
     </application>
 
 </manifest>

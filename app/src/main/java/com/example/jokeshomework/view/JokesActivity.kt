@@ -26,7 +26,7 @@ class JokesActivity: AppCompatActivity() {
         jokeResponse = intent.getSerializableExtra(JOKESPACKAGEKEY) as JokeResponse
         val jokes = jokeResponse.jokes
         Log.d(TAG, "onCreate: "+jokes.size)
-        jokeAdapter = JokeAdapter(jokes)
+        jokeAdapter = JokeAdapter(jokes, this)
         recyclerView = binder.jokeRv
         val linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
